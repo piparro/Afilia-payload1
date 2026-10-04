@@ -1,4 +1,4 @@
-export type Theme = 'dark' | 'light'
+export type Theme = 'dark' | 'light' | 'afi'
 
 export const themeLocalStorageKey = 'payload-theme'
 

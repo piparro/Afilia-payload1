@@ -20,7 +20,9 @@ export const CallToAction: Block = {
         features: ({ rootFeatures }) => {
           return [
             ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            HeadingFeature({
+              enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'],
+            }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
           ]
@@ -28,8 +30,9 @@ export const CallToAction: Block = {
       }),
       label: false,
     },
+
     linkGroup({
-      appearances: ['default', 'outline'],
+      appearances: ['default', 'outline', 'ghost'],
       overrides: {
         maxRows: 2,
       },

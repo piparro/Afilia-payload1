@@ -2,9 +2,13 @@ import type { Field, GroupField } from 'payload'
 
 import deepMerge from '@/utilities/deepMerge'
 
-export type LinkAppearances = 'default' | 'outline'
+export type LinkAppearances =
+  'default' | 'outline' | 'ghost' | 'disabled'
 
-export const appearanceOptions: Record<LinkAppearances, { label: string; value: string }> = {
+export const appearanceOptions: Record<
+  LinkAppearances,
+  { label: string; value: string }
+> = {
   default: {
     label: 'Default',
     value: 'default',
@@ -12,6 +16,10 @@ export const appearanceOptions: Record<LinkAppearances, { label: string; value: 
   outline: {
     label: 'Outline',
     value: 'outline',
+  },
+  ghost: {
+    label: 'Ghost',
+    value: 'ghost',
   },
 }
 
@@ -21,7 +29,11 @@ type LinkType = (options?: {
   overrides?: Partial<GroupField>
 }) => Field
 
-export const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = {}) => {
+export const link: LinkType = ({
+  appearances,
+  disableLabel = false,
+  overrides = {},
+} = {}) => {
   const linkResult: GroupField = {
     name: 'link',
     type: 'group',
@@ -72,7 +84,8 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       name: 'reference',
       type: 'relationship',
       admin: {
-        condition: (_, siblingData) => siblingData?.type === 'reference',
+        condition: (_, siblingData) =>
+          siblingData?.type === 'reference',
       },
       label: 'Document to link to',
       relationTo: ['pages', 'posts'],
@@ -82,7 +95,8 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       name: 'url',
       type: 'text',
       admin: {
-        condition: (_, siblingData) => siblingData?.type === 'custom',
+        condition: (_, siblingData) =>
+          siblingData?.type === 'custom',
       },
       label: 'Custom URL',
       required: true,
@@ -118,17 +132,23 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
   }
 
   if (appearances !== false) {
-    let appearanceOptionsToUse = [appearanceOptions.default, appearanceOptions.outline]
+    let appearanceOptionsToUse = [
+      appearanceOptions.default,
+      appearanceOptions.outline,
+    ]
 
     if (appearances) {
-      appearanceOptionsToUse = appearances.map((appearance) => appearanceOptions[appearance])
+      appearanceOptionsToUse = appearances.map(
+        (appearance) => appearanceOptions[appearance],
+      )
     }
 
     linkResult.fields.push({
       name: 'appearance',
       type: 'select',
       admin: {
-        description: 'Choose how the link should be rendered.',
+        description:
+          'Choose how the link should be rendered.',
       },
       defaultValue: 'default',
       options: appearanceOptionsToUse,

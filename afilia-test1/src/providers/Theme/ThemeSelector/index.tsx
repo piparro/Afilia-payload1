@@ -29,7 +29,9 @@ export const ThemeSelector: React.FC = () => {
   }
 
   React.useEffect(() => {
-    const preference = window.localStorage.getItem(themeLocalStorageKey)
+    const preference = window.localStorage.getItem(
+      themeLocalStorageKey,
+    )
     setValue(preference ?? 'auto')
   }, [])
 
@@ -45,6 +47,7 @@ export const ThemeSelector: React.FC = () => {
         <SelectItem value="auto">Auto</SelectItem>
         <SelectItem value="light">Light</SelectItem>
         <SelectItem value="dark">Dark</SelectItem>
+        <SelectItem value="afi">Creator</SelectItem>
       </SelectContent>
     </Select>
   )

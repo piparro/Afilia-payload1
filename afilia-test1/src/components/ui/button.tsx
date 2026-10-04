@@ -2,7 +2,10 @@
 
 import { cn } from '@/utilities/ui'
 import { Slot } from '@radix-ui/react-slot'
-import { type VariantProps, cva } from 'class-variance-authority'
+import {
+  type VariantProps,
+  cva,
+} from 'class-variance-authority'
 import * as React from 'react'
 
 const buttonVariants = cva(
@@ -10,19 +13,19 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-primary text-primary-foreground shadow-sm hover:bg-primary/90',
-        destructive: 'bg-destructive text-destructive-foreground shadow-xs hover:bg-destructive/90',
+        default:
+          'bg-primary text-primary-foreground hover:bg-secondary active:bg-primary  active:shadow-[0_0_5px_var(--accent),0_0_15px_var(--accent),0_0_2px_#fff] active:[text-shadow:0_0_2px_#fff,0_0_5px_var(--accent),0_0_15px_var(--accent)] disabled:bg-muted disabled:text-accent-foreground  ',
         outline:
-          'border border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground',
-        secondary: 'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',
-        ghost: 'hover:bg-accent hover:text-accent-foreground',
-        link: 'text-primary underline-offset-4 hover:underline',
+          'bg-primary/30 border-primary border-solid border-2 hover:border-secondary  hover:border-solid  hover:border-2 text-primary-foreground hover:bg-secondary/20 active:bg-primary/30  active:shadow-[0_0_5px_var(--accent),0_0_15px_var(--accent),0_0_2px_#fff] active:[text-shadow:0_0_2px_#fff,0_0_5px_var(--accent),0_0_15px_var(--accent)] disabled:bg-muted/30 disabled:border-solid disabled:border-2 disabled:border-muted',
+
+        ghost:
+          ' text-primary-foreground hover:bg-secondary/15 active:bg-primary/15  active:inset-shadow-[0_0_5px_var(--accent),0_0_15px_var(--accent),0_0_2px_#fff] active:[text-shadow:0_0_2px_#fff,0_0_5px_var(--accent),0_0_15px_var(--accent)]',
       },
       size: {
         clear: '',
         default: 'h-10 px-4 py-2 has-[>svg]:px-3',
-        sm: 'h-9 rounded-md px-3 has-[>svg]:px-2.5',
-        lg: 'h-11 rounded-md px-8 has-[>svg]:px-4',
+        sm: 'h-9 rounded-sm px-3 has-[>svg]:px-2.5',
+        lg: 'h-11 rounded-sm px-8 has-[>svg]:px-4',
         icon: 'size-10',
       },
     },
@@ -34,18 +37,28 @@ const buttonVariants = cva(
 )
 
 export interface ButtonProps
-  extends React.ComponentProps<'button'>,
+  extends
+    React.ComponentProps<'button'>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
 }
 
-const Button: React.FC<ButtonProps> = ({ asChild = false, className, size, variant, ...props }) => {
+const Button: React.FC<ButtonProps> = ({
+  asChild = false,
+  className,
+  size,
+  variant,
+  ...props
+}) => {
   const Comp = asChild ? Slot : 'button'
 
   return (
     <Comp
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
+
+      className={cn(
+        buttonVariants({ variant, size, className }),
+      )}
       {...props}
     />
   )
