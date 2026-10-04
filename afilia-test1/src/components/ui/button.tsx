@@ -55,11 +55,11 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <Comp
       data-slot="button"
-
       className={cn(
         buttonVariants({ variant, size, className }),
       )}
       {...props}
+      disabled
     />
   )
 }
