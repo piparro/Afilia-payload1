@@ -16,7 +16,7 @@ const buttonVariants = cva(
         default:
           'bg-primary text-primary-foreground hover:bg-secondary active:bg-primary  active:shadow-[0_0_5px_var(--accent),0_0_15px_var(--accent),0_0_2px_#fff] active:[text-shadow:0_0_2px_#fff,0_0_5px_var(--accent),0_0_15px_var(--accent)] disabled:bg-muted disabled:text-accent-foreground  ',
         outline:
-          'bg-primary/30 border-primary border-solid border-2 hover:border-secondary  hover:border-solid  hover:border-2 text-primary-foreground hover:bg-secondary/20 active:bg-primary/30  active:shadow-[0_0_5px_var(--accent),0_0_15px_var(--accent),0_0_2px_#fff] active:[text-shadow:0_0_2px_#fff,0_0_5px_var(--accent),0_0_15px_var(--accent)] disabled:bg-muted/30 disabled:border-solid disabled:border-2 disabled:border-muted',
+          'bg-primary/30 border-primary border-solid border-2 hover:border-secondary  hover:border-solid  hover:border-2 text-primary-foreground hover:bg-secondary/20 active:bg-primary/30  active:shadow-[0_0_5px_var(--accent),0_0_15px_var(--accent),0_0_2px_#fff] active:[text-shadow:0_0_2px_#fff,0_0_5px_var(--accent),0_0_15px_var(--accent)] ',
 
         ghost:
           ' text-primary-foreground hover:bg-secondary/15 active:bg-primary/15  active:inset-shadow-[0_0_5px_var(--accent),0_0_15px_var(--accent),0_0_2px_#fff] active:[text-shadow:0_0_2px_#fff,0_0_5px_var(--accent),0_0_15px_var(--accent)]',
@@ -58,8 +58,8 @@ const Button: React.FC<ButtonProps> = ({
       className={cn(
         buttonVariants({ variant, size, className }),
       )}
+      data-disabled="true"
       {...props}
-      disabled
     />
   )
 }
