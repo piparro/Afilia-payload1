@@ -45,9 +45,9 @@ export const ThemeSelector: React.FC = () => {
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="auto">Auto</SelectItem>
-        <SelectItem value="light">Light</SelectItem>
-        <SelectItem value="dark">Dark</SelectItem>
-        <SelectItem value="afi">Creator</SelectItem>
+        <SelectItem value="light">Light theme</SelectItem>
+        <SelectItem value="dark">Dark theme</SelectItem>
+        <SelectItem value="afi">Creator theme</SelectItem>
       </SelectContent>
     </Select>
   )

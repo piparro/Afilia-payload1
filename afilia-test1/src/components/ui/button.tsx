@@ -8,19 +8,24 @@ import {
 } from 'class-variance-authority'
 import * as React from 'react'
 
+export const defaultButtonStyle =
+  'bg-primary text-primary-foreground rounded-tl-md rounded-br-md hover:bg-secondary active:bg-primary  active:shadow-[0_0_3px_var(--accent),0_0_5px_var(--accent),0_0_2px_#fff] disabled:bg-muted disabled:text-accent-foreground  '
+export const outlineButtonStyle =
+  'bg-primary/30 border-primary rounded-tl-md rounded-br-md border-solid border-2 hover:border-secondary  hover:border-solid  hover:border-2 text-primary-foreground dark:text-foreground hover:bg-secondary/20 active:bg-primary/30  active:shadow-[0_0_5px_var(--accent),0_0_3px_var(--accent),0_0_2px_#fff]'
+export const ghostButtonStyle =
+  ' text-primary-foreground dark:text-foreground hover:bg-secondary/15 active:bg-primary/15  active:inset-shadow-[0_0_10px_var(--accent),0_0_5px_var(--accent),0_0_3px_var(--accent),0_0_2px_#fff] ] rounded-tl-md rounded-br-md'
+export const linkButtonStyle =
+  'text-foreground underline-offset-4 active:underline rounded-tl-md rounded-br-md'
+
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap  text-sm font-medium transition-[color,box-shadow] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 ring-ring/10 dark:ring-ring/20 dark:outline-ring/40 outline-ring/50 focus-visible:ring-4 focus-visible:outline-1 aria-invalid:focus-visible:ring-0",
   {
     variants: {
       variant: {
-        default:
-          'bg-primary text-primary-foreground hover:bg-secondary active:bg-primary  active:shadow-[0_0_3px_var(--accent),0_0_5px_var(--accent),0_0_2px_#fff] active:[text-shadow:0_0_2px_#fff,0_0_3px_var(--accent),0_0_5px_var(--accent)] disabled:bg-muted disabled:text-accent-foreground  ',
-        outline:
-          'bg-primary/30 border-primary border-solid border-2 hover:border-secondary  hover:border-solid  hover:border-2 text-primary-foreground dark:text-foreground hover:bg-secondary/20 active:bg-primary/30  active:shadow-[0_0_5px_var(--accent),0_0_3px_var(--accent),0_0_2px_#fff] ',
-
-        ghost:
-          ' text-primary-foreground dark:text-foreground hover:bg-secondary/15 active:bg-primary/15  active:inset-shadow-[0_0_10px_var(--accent),0_0_5px_var(--accent),0_0_3px_var(--accent),0_0_2px_#fff] ]',
-        link: 'text-foreground underline-offset-4 active:underline ',
+        default: defaultButtonStyle,
+        outline: outlineButtonStyle,
+        ghost: ghostButtonStyle,
+        link: linkButtonStyle,
       },
       size: {
         clear: 'px-2 py-1',
