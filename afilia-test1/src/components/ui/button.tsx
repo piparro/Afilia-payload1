@@ -20,9 +20,10 @@ const buttonVariants = cva(
 
         ghost:
           ' text-primary-foreground dark:text-foreground hover:bg-secondary/15 active:bg-primary/15  active:inset-shadow-[0_0_10px_var(--accent),0_0_5px_var(--accent),0_0_3px_var(--accent),0_0_2px_#fff] ]',
+        link: 'text-foreground  underline-offset-4 hover:underline',
       },
       size: {
-        clear: '',
+        clear: 'px-2 py-1',
         default:
           'h-10 px-4 py-2 has-[>svg]:px-3 rounded-tl-md rounded-br-md',
         sm: 'h-9 rounded-tl-md rounded-br-md px-3 has-[>svg]:px-2.5',
@@ -57,7 +58,8 @@ const Button: React.FC<ButtonProps> = ({
       ? 'rounded-tl-md rounded-br-md'
       : ''
 
-  const visible = variant == 'ghost' ? 'hidden' : 'visible'
+  const isGhost = variant == 'ghost'
+  const isLink = variant == 'link'
 
   return (
     <div className={cn('group relative', rounded)}>
@@ -65,34 +67,52 @@ const Button: React.FC<ButtonProps> = ({
         data-slot="button"
         className={cn(
           buttonVariants({ variant, size, className }),
-          'transition-transform duration-200 group-hover:scale-110',
+          'transition-transform duration-200 group-hover:scale-105',
         )}
         {...props}
       />
-
-      <span
-        aria-hidden
-        className={cn(
-          'spot-ring pointer-events-none absolute inset-0 rounded-[inherit] animate-[spot_10s_linear_infinite] motion-reduce:animate-none transition-transform duration-200 group-hover:scale-110',
-          visible,
-        )}
-      />
-      <div className="pointer-events-none absolute inset-0 transition-transform duration-200 group-hover:scale-110 ">
-        <svg
-          viewBox="0 0 20 20"
+      {!isGhost && !isLink && (
+        <span
           aria-hidden
-          className="pointer-events-none absolute -top-2.5 right-0.5 size-5 overflow-visible fill-chart-2  [stroke-linejoin:round]  "
-        >
-          <path d="M10 0A10 10 0 0 0 20 10A10 10 0 0 0 10 20A10 10 0 0 0 0 10A10 10 0 0 0 10 0Z" />
-        </svg>
-        <svg
-          viewBox="0 0 20 20"
-          aria-hidden
-          className="pointer-events-none absolute top-1 right-3.5 size-3 overflow-visible fill-chart-2"
-        >
-          <path d="M10 0A10 10 0 0 0 20 10A10 10 0 0 0 10 20A10 10 0 0 0 0 10A10 10 0 0 0 10 0Z" />
-        </svg>
-      </div>
+          className="spot-ring pointer-events-none absolute inset-0 rounded-[inherit] animate-[spot_10s_linear_infinite] motion-reduce:animate-none transition-transform duration-200 group-hover:scale-105"
+        />
+      )}
+      {!isLink && (
+        <div className="pointer-events-none absolute inset-0 transition-transform duration-200 group-hover:scale-105  ">
+          <svg
+            viewBox="0 0 20 20"
+            aria-hidden
+            className=" pointer-events-none absolute -top-2.5 right-0.5 size-5 overflow-visible fill-chart-2 transition-[filter] duration-150 group-active:filter-[drop-shadow(0_0_2px_#fff)_drop-shadow(0_0_5px_var(--accent))_drop-shadow(0_0_10px_var(--accent))] [stroke-linejoin:round] "
+          >
+            <path d="M10 0A10 10 0 0 0 20 10A10 10 0 0 0 10 20A10 10 0 0 0 0 10A10 10 0 0 0 10 0Z" />
+          </svg>
+          <svg
+            viewBox="0 0 20 20"
+            aria-hidden
+            className="pointer-events-none absolute top-1 right-3.5 size-3 overflow-visible fill-chart-2"
+          >
+            <path d="M10 0A10 10 0 0 0 20 10A10 10 0 0 0 10 20A10 10 0 0 0 0 10A10 10 0 0 0 10 0Z" />
+          </svg>
+        </div>
+      )}
+      {isLink && (
+        <div className="pointer-events-none absolute inset-0 transition-transform duration-200 group-hover:scale-105 ">
+          <svg
+            viewBox="0 0 20 20"
+            aria-hidden
+            className="pointer-events-none absolute top-1/2 left-0 size-3 -translate-x-1/2 -translate-y-1/2 overflow-visible fill-chart-2"
+          >
+            <path d="M10 0A10 10 0 0 0 20 10A10 10 0 0 0 10 20A10 10 0 0 0 0 10A10 10 0 0 0 10 0Z" />
+          </svg>
+          <svg
+            viewBox="0 0 20 20"
+            aria-hidden
+            className="pointer-events-none absolute top-1/2 left-full size-3 -translate-x-1/2 -translate-y-1/2 overflow-visible fill-chart-2"
+          >
+            <path d="M10 0A10 10 0 0 0 20 10A10 10 0 0 0 10 20A10 10 0 0 0 0 10A10 10 0 0 0 10 0Z" />
+          </svg>
+        </div>
+      )}
     </div>
   )
 }
