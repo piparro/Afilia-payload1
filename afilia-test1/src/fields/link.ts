@@ -80,6 +80,7 @@ export const link: LinkType = ({
           {
             name: 'stars',
             type: 'checkbox',
+            defaultValue: true,
             admin: {
               style: {
                 alignSelf: 'flex-start',
