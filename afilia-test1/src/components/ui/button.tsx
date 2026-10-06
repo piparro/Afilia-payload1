@@ -86,11 +86,11 @@ const Button: React.FC<ButtonProps> = ({
           <path d="M10 0A10 10 0 0 0 20 10A10 10 0 0 0 10 20A10 10 0 0 0 0 10A10 10 0 0 0 10 0Z" />
         </svg>
         <svg
-          viewBox="0 0 24 24"
+          viewBox="0 0 20 20"
           aria-hidden
           className="pointer-events-none absolute top-1 right-3.5 size-3 overflow-visible fill-chart-2"
         >
-          <path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5L12 0Z" />
+          <path d="M10 0A10 10 0 0 0 20 10A10 10 0 0 0 10 20A10 10 0 0 0 0 10A10 10 0 0 0 10 0Z" />
         </svg>
       </div>
     </div>
