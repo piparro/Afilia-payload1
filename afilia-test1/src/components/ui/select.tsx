@@ -4,7 +4,11 @@ import { cn } from '@/utilities/ui'
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { Check, ChevronDown, ChevronUp } from 'lucide-react'
 import * as React from 'react'
-import { defaultButtonStyle } from './button'
+import {
+  defaultButtonStyle,
+  ghostButtonStyle,
+  outlineButtonStyle,
+} from './button'
 const rounded = 'rounded-tl-md rounded-br-md'
 
 const Select: React.FC<
@@ -46,14 +50,14 @@ const SelectTrigger: React.FC<
       className={cn(
         'flex items-center justify-between bg-primary px-3 py-2 text-sm transition-[color,box-shadow] hover:scale-105 active:scale-105 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:focus-visible:ring-0 ...',
         className,
-        defaultButtonStyle,
+        outlineButtonStyle,
       )}
       {...props}
     >
       {children}
       {}
       <SelectPrimitive.Icon asChild>
-        <ChevronDown className="size-4 in-data-[state=closed]:rotate-180" />
+        <ChevronDown className="size-4 text-chart-2 in-data-[state=closed]:rotate-180" />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   )
@@ -72,9 +76,10 @@ const SelectContent: React.FC<
       <SelectPrimitive.Content
         data-slot="select-content"
         className={cn(
-          'bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md border shadow-md',
+          'bg-popover text-popover-foreground border border-accent data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md ',
           position === 'popper' &&
             'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
+
           className,
         )}
         position={position}
@@ -118,8 +123,9 @@ const SelectItem: React.FC<
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        "focus:bg-secondary focus:scale-105 focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+        "focus: focus:scale-105 [&_svg:not([class*='text-'])]:text-chart-2 relative flex w-full cursor-default items-center gap-2 py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
         className,
+        ghostButtonStyle,
       )}
       {...props}
     >
