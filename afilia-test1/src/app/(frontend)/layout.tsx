@@ -24,19 +24,35 @@ const limelight = Limelight({
   display: 'swap',
 })
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   const { isEnabled } = await draftMode()
 
   return (
     <html
-      className={cn(GeistSans.variable, GeistMono.variable, limelight.variable)}
+      className={cn(
+        GeistSans.variable,
+        GeistMono.variable,
+        limelight.variable,
+      )}
       lang="en"
       suppressHydrationWarning
     >
       <head>
         <InitTheme />
-        <link href="/favicon.ico" rel="icon" sizes="32x32" />
-        <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+        <link
+          href="/favicon.ico"
+          rel="icon"
+          sizes="32x32"
+        />
+        <link
+          href="/favicon.svg"
+          rel="icon"
+          type="image/svg+xml"
+        />
       </head>
       <body>
         <Providers>
