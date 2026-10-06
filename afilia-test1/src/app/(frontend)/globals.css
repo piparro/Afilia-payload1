@@ -87,6 +87,36 @@
     }
   }
 }
+@property --spin {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes spot {
+  from {
+    --spin: 0deg;
+  }
+
+  to {
+    --spin: 360deg;
+  }
+}
+
+.spot-ring {
+  padding: 2px;
+  background: conic-gradient(
+    from calc(var(--spin) + 45deg),
+    transparent 0deg,
+    var(--accent) 360deg
+  );
+
+  mask-image:
+    linear-gradient(#000, #000), linear-gradient(#000, #000);
+  mask-clip: content-box, border-box;
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+}
 
 :root {
   --background: #ddd2b5;
@@ -101,27 +131,27 @@
   --secondary-foreground: #221d1a;
   --muted: #d0b8a7;
   --muted-foreground: #6d635c;
-  --accent: #ffb3b6;
+  --accent: #fccdcf;
   --accent-foreground: #221d1a;
   --destructive: oklch(57.7% 0.245 27.325deg);
   --destructive-foreground: #221d1a;
   --border: #d0b8a7;
   --input: #d0b8a7;
-  --ring: #b98560;
-  --chart-1: oklch(64.6% 0.222 41.116deg);
-  --chart-2: oklch(60% 0.118 184.704deg);
+  --ring: ##d89277;
+  --chart-1: #fff; /* contrast */
+  --chart-2: #ecda87;
   --chart-3: oklch(39.8% 0.07 227.392deg);
   --chart-4: oklch(82.8% 0.189 84.429deg);
   --chart-5: oklch(76.9% 0.188 70.08deg);
   --radius: 0.625rem;
   --sidebar: #ddd2b5;
   --sidebar-foreground: #221d1a;
-  --sidebar-primary: #b98560;
+  --sidebar-primary: ##d89277;
   --sidebar-primary-foreground: #221d1a;
   --sidebar-accent: #e3997c;
   --sidebar-accent-foreground: #221d1a;
   --sidebar-border: #d0b8a7;
-  --sidebar-ring: #b98560;
+  --sidebar-ring: ##d89277;
   --success: oklch(78% 0.08 200deg);
   --warning: oklch(89% 0.1 75deg);
   --error: oklch(75% 0.15 25deg);
@@ -147,8 +177,8 @@
   --card-foreground: oklch(98.5% 0 0deg);
   --popover: oklch(14.5% 0 0deg);
   --popover-foreground: oklch(98.5% 0 0deg);
-  --chart-1: oklch(48.8% 0.243 264.376deg);
-  --chart-2: oklch(69.6% 0.17 162.48deg);
+  --chart-1: #fff /* contrast */;
+  --chart-2: #ecda87;
   --chart-3: oklch(76.9% 0.188 70.08deg);
   --chart-4: oklch(62.7% 0.265 303.9deg);
   --chart-5: oklch(64.5% 0.246 16.439deg);
@@ -185,8 +215,8 @@
   --border: #8a84ae;
   --input: #8a84ae;
   --ring: #755da3;
-  --chart-1: oklch(48.8% 0.243 264.376deg);
-  --chart-2: oklch(69.6% 0.17 162.48deg);
+  --chart-1: #fff;
+  --chart-2: #ecda87;
   --chart-3: oklch(76.9% 0.188 70.08deg);
   --chart-4: oklch(62.7% 0.265 303.9deg);
   --chart-5: oklch(64.5% 0.246 16.439deg);
