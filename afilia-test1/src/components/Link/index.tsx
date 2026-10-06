@@ -19,6 +19,7 @@ type CMSLinkType = {
     value: Page | Post | string | number
   } | null
   size?: ButtonProps['size'] | null
+  stars?: ButtonProps['stars'] | null
   type?: 'custom' | 'reference' | null
   url?: string | null
 }
@@ -33,6 +34,7 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
     newTab,
     reference,
     size: sizeFromProps,
+    stars = true,
     url,
   } = props
 
@@ -73,6 +75,7 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
       className={className}
       size={size}
       variant={appearance}
+      stars={stars ?? true}
     >
       <Link
         className={cn(className)}

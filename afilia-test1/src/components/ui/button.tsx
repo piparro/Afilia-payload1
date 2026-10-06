@@ -20,7 +20,7 @@ const buttonVariants = cva(
 
         ghost:
           ' text-primary-foreground dark:text-foreground hover:bg-secondary/15 active:bg-primary/15  active:inset-shadow-[0_0_10px_var(--accent),0_0_5px_var(--accent),0_0_3px_var(--accent),0_0_2px_#fff] ]',
-        link: 'text-foreground  underline-offset-4 hover:underline',
+        link: 'text-foreground underline-offset-4 active:underline ',
       },
       size: {
         clear: 'px-2 py-1',
@@ -43,6 +43,7 @@ export interface ButtonProps
     React.ComponentProps<'button'>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
+  stars?: boolean
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -50,6 +51,7 @@ const Button: React.FC<ButtonProps> = ({
   className,
   size,
   variant,
+  stars = true,
   ...props
 }) => {
   const Comp = asChild ? Slot : 'button'
@@ -77,7 +79,7 @@ const Button: React.FC<ButtonProps> = ({
           className="spot-ring pointer-events-none absolute inset-0 rounded-[inherit] animate-[spot_10s_linear_infinite] motion-reduce:animate-none transition-transform duration-200 group-hover:scale-105"
         />
       )}
-      {!isLink && (
+      {!isLink && stars && (
         <div className="pointer-events-none absolute inset-0 transition-transform duration-200 group-hover:scale-105  ">
           <svg
             viewBox="0 0 20 20"
@@ -95,7 +97,7 @@ const Button: React.FC<ButtonProps> = ({
           </svg>
         </div>
       )}
-      {isLink && (
+      {isLink && stars && (
         <div className="pointer-events-none absolute inset-0 transition-transform duration-200 group-hover:scale-105 ">
           <svg
             viewBox="0 0 20 20"

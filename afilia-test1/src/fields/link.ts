@@ -3,7 +3,7 @@ import type { Field, GroupField } from 'payload'
 import deepMerge from '@/utilities/deepMerge'
 
 export type LinkAppearances =
-  'default' | 'outline' | 'ghost' | 'disabled'
+  'default' | 'outline' | 'ghost' | 'link'
 
 export const appearanceOptions: Record<
   LinkAppearances,
@@ -21,10 +21,12 @@ export const appearanceOptions: Record<
     label: 'Ghost',
     value: 'ghost',
   },
+  link: { label: 'Link', value: 'link' },
 }
 
 type LinkType = (options?: {
   appearances?: LinkAppearances[] | false
+  stars?: boolean
   disableLabel?: boolean
   overrides?: Partial<GroupField>
 }) => Field
@@ -32,6 +34,7 @@ type LinkType = (options?: {
 export const link: LinkType = ({
   appearances,
   disableLabel = false,
+  stars,
   overrides = {},
 } = {}) => {
   const linkResult: GroupField = {
@@ -73,6 +76,17 @@ export const link: LinkType = ({
               width: '50%',
             },
             label: 'Open in new tab',
+          },
+          {
+            name: 'stars',
+            type: 'checkbox',
+            admin: {
+              style: {
+                alignSelf: 'flex-start',
+              },
+              width: '50%',
+            },
+            label: 'include star decorations',
           },
         ],
       },
