@@ -107,14 +107,14 @@ const Button: React.FC<ButtonProps> = ({
           <svg
             viewBox="0 0 20 20"
             aria-hidden
-            className="pointer-events-none absolute top-1/2 left-0 size-3 -translate-x-1/2 -translate-y-1/2 overflow-visible fill-chart-2"
+            className="pointer-events-none absolute top-1/2 left-0 size-3 -translate-x-1/2 -translate-y-1/2 overflow-visible fill-chart-2 group-active:filter-[drop-shadow(0_0_2px_#fff)_drop-shadow(0_0_5px_var(--accent))_drop-shadow(0_0_10px_var(--accent))]"
           >
             <path d="M10 0A10 10 0 0 0 20 10A10 10 0 0 0 10 20A10 10 0 0 0 0 10A10 10 0 0 0 10 0Z" />
           </svg>
           <svg
             viewBox="0 0 20 20"
             aria-hidden
-            className="pointer-events-none absolute top-1/2 left-full size-3 -translate-x-1/2 -translate-y-1/2 overflow-visible fill-chart-2"
+            className="pointer-events-none absolute top-1/2 left-full size-3 -translate-x-1/2 -translate-y-1/2 overflow-visible fill-chart-2 group-active:filter-[drop-shadow(0_0_2px_#fff)_drop-shadow(0_0_5px_var(--accent))_drop-shadow(0_0_10px_var(--accent))]"
           >
             <path d="M10 0A10 10 0 0 0 20 10A10 10 0 0 0 10 20A10 10 0 0 0 0 10A10 10 0 0 0 10 0Z" />
           </svg>

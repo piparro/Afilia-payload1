@@ -48,7 +48,7 @@ const SelectTrigger: React.FC<
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        'flex items-center justify-between bg-primary px-3 py-2 text-sm transition-[color,box-shadow] hover:scale-105 active:scale-105 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:focus-visible:ring-0 ...',
+        'flex items-center justify-between bg-primary px-3 py-2 text-sm transition-[color,box-shadow] focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:focus-visible:ring-0 ...',
         className,
         outlineButtonStyle,
       )}
@@ -123,7 +123,7 @@ const SelectItem: React.FC<
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        "focus: focus:scale-105 [&_svg:not([class*='text-'])]:text-chart-2 relative flex w-full cursor-default items-center gap-2 py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+        " [&_svg:not([class*='text-'])]:text-chart-2 relative flex w-full cursor-default items-center gap-2 py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
         className,
         ghostButtonStyle,
       )}
